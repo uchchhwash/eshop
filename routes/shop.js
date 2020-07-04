@@ -1,10 +1,16 @@
-const rootDir = require("../util/path")
+const adminData = require("./admin");
+const rootDir = require("../util/path");
 const path = require("path");
 const express = require("express");
 const router = express.Router();
 
+
 router.get("/", (req, res) => {
-    res.sendFile(path.join(rootDir, "views", "shop.html"))
+    res.render("shop", {
+        pageTitle: "Products",
+        path: "/shop",
+        prods: adminData.products
+    });
 });
 
 module.exports = router;
