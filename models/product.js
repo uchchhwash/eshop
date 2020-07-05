@@ -9,10 +9,7 @@ const Product = sequelize.define('product', {
         allowNull: false,
         primaryKey: true
     },
-    title: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+    title: Sequelize.STRING,
     price: {
         type: Sequelize.DOUBLE,
         allowNull: false
