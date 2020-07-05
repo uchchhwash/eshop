@@ -5,7 +5,8 @@ const sequelize = new Sequelize(
     'root',
     'root1234@', {
         dialect: 'mysql',
-        host: 'localhost'
+        host: 'localhost',
+        logging: false
     });
 
 module.exports = sequelize;
