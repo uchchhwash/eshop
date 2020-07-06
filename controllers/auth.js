@@ -4,13 +4,22 @@ const nodeMailGun = require('nodemailer-mailgun-transport');
 
 const User = require('../models/user');
 
-const maiiGunAuth = {
+// const maiiGunAuth = {
+//     auth: {
+//         api_key: '',
+//         domain: ''
+//     }
+// }
+// const transporter = nodemailer.createTransport(nodeMailGun(maiiGunAuth));
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.mailtrap.io',
+    port: 2525,
     auth: {
-        api_key: '',
-        domain: ''
+        user: '498da553c69536',
+        pass: 'd0d381b3c4cebc'
     }
-}
-const transporter = nodemailer.createTransport(nodeMailGun(maiiGunAuth));
+})
 
 exports.getLogin = (req, res, next) => {
     let message = req.flash('error');
@@ -97,8 +106,8 @@ exports.postSignup = (req, res, next) => {
                 .then(result => {
                     res.redirect('/login');
                     return transporter.sendMail({
-                        from: 'myemail@example.com',
-                        to: 'uchchhwash782@gmail.com', // An array if you have multiple recipients.
+                        from: 'eshop@node.com',
+                        to: email, // An array if you have multiple recipients.
                         subject: 'Hey you, awesome!',
                         'h:Reply-To': 'reply2this@company.com',
                         //You can use "html:" to send HTML email content. It's magic!
